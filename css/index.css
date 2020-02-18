@@ -24,6 +24,7 @@ header{
 }
  /* game grid  */
 #game{
+    position: relative;
     margin: auto;
     width: 500px;
     height: 500px;
@@ -35,6 +36,7 @@ header{
 
  /* game items  */
 #cherry{
+    z-index: -1;
     width: 50%;
     height: 50%;
     align-self: center;
@@ -44,12 +46,49 @@ header{
     background-color: #790604;
 }
 #snake{
-    grid-row: 1/ span 1;
-    grid-column: 1/ span 1;
+    grid-row: 5/ span 1;
+    grid-column: 5/ span 1;
     height: 80%;
     align-self: center;
     background-color: royalblue;
     border: solid 1px red;
+}
+#restart{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 8px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    border: 2px solid black;
+    color: red;
+    font-size: xx-large;
+    transform: translate(-50%,-50%);
+}
+#score{
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    border: 2px solid black;
+    font-size: xx-large;
+    padding: 8px;
+}
+#start{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 8px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    border: 2px solid black;
+    color: red;
+    font-size: xx-large;
+    transform: translate(-50%,-50%);
 }
 
  /* footer  */
