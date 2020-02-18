@@ -45,7 +45,15 @@ header{
     grid-row: 3; 
     background-color: #790604;
 }
-#snake{
+#snakehead{
+    grid-row: 5/ span 1;
+    grid-column: 5/ span 1;
+    height: 80%;
+    align-self: center;
+    background-color: royalblue;
+    border: solid 1px red;
+}
+.snakebody{
     grid-row: 5/ span 1;
     grid-column: 5/ span 1;
     height: 80%;

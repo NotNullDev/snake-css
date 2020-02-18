@@ -1,16 +1,16 @@
 //  waiting for html for load and then asign game objects 
 window.addEventListener("load", ()=>{
-const snake = document.querySelector('#snake');
-const cherry = document.querySelector('#cherry');
+// const snakehead = document.querySelector('#snakehead');
+// const cherry = document.querySelector('#cherry');
 
-//  check if snake and cherry are loaded propery 
-if(snake == undefined || cherry == undefined){
-    error();
-}else{
+// //  check if snake and cherry are loaded propery 
+// if(snakehead == undefined || cherry == undefined){
+//     error();
+// }else{
+// document.querySelector('#start').style.display = "block";
+// randomizeCherry();
+// }
 document.querySelector('#start').style.display = "block";
-randomizeCherry();
-}
-
 });
 // speed of the snake
 let gameSpeed = 400;
@@ -19,12 +19,18 @@ let sx = 5;
 let sy = 5;
 let slength = 1;
 let sd = 6;
+let stx = 0;
+let sty = 0;
 //cherry c:cherry
 let cx = 2;
 let cy = 1;
 
 //  game objects positons
-const snakePosition = [sx,sy];
+const snakePositions = {
+    head: [sx,sy],
+    lenght: slength,
+    tail: [stx,sty]
+}
 const cherryPosition = [cx,cy];
 
 // keySensor
@@ -63,8 +69,8 @@ loop = setInterval(moveSnake, gameSpeed);
 
 // update snake, cherry positions on screen
 function update(){
-    snake.style.gridColumn = `${sx}`
-    snake.style.gridRow = `${sy}`
+    snakehead.style.gridColumn = `${sx}`
+    snakehead.style.gridRow = `${sy}`
 }
 function updateCherry(){
     cherry.style.gridColumn = `${cx}`
@@ -86,14 +92,12 @@ function randomizeCherry(){
 
 
 function moveSnake(){
-    console.log(`${cx},${cy}`);
-    console.log(`${sx},${sy}`);
     switch(sd){
         case 2: 
             if(sy>0 && sy <10){
                 sy--;
                 update();
-                Colizion();
+                Colizion('gora');
             }else{
                 endGame();
             }
@@ -102,7 +106,7 @@ function moveSnake(){
             if(sx>0 && sx <10){
                 sx++;
                 update();
-                Colizion();
+                Colizion('prawo');
             }else{
                 endGame();
             }
@@ -111,7 +115,7 @@ function moveSnake(){
             if(sy>0 && sy <10){
                 sy++;
                 update();
-                Colizion();
+                Colizion('dol');
             }else{
                 endGame();
             }
@@ -120,7 +124,7 @@ function moveSnake(){
             if(sx>0 && sx <10){
                 sx--;
                 update();
-                Colizion();
+                Colizion('prawo');
             }else{
                 endGame();
             }
@@ -129,12 +133,25 @@ function moveSnake(){
 }
 
 
-function Colizion(){
+function Colizion(kierunek){
     if(sx == cx && sy == cy){
+       // addTail(kierunek);
         score += 100;
         randomizeCherry();
     }
 }
+// function addTail(kierunek){
+//     const game = document.querySelector('#game');
+//     switch(kierunek){
+//         case 'gora':
+//             game.innerHTML += '<div class="snakebody"></div>'
+//         case 'dol':
+//         case 'lewo':
+//         case 'prawo':
+
+//     }
+
+// }
 
 let score = 0;
 
